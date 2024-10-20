@@ -1,10 +1,11 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "./../Logo/index";
 import "./Nv.scss";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { authContext } from "../../context/AuthContext";
 
 export default function Nvbar() {
+  const [responsive, setResponsive] = useState(false);
   const { token, setToken } = useContext(authContext);
   const navigate = useNavigate();
 
@@ -14,6 +15,14 @@ export default function Nvbar() {
 
     navigate("/logIn");
   };
+
+  function navTogle() {
+    if (responsive) {
+      setResponsive(false);
+    } else {
+      setResponsive(true);
+    }
+  }
 
   return (
     <nav className=" border-gray-200 bg-gray-900 z-20">
@@ -26,6 +35,7 @@ export default function Nvbar() {
         </Link>
         <button
           data-collapse-toggle="navbar-default"
+          onClick={navTogle}
           type="button"
           className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg lg:hidden  focus:outline-none focus:ring-2  text-gray-400 focus:ring-gray-600"
           aria-controls="navbar-default"
@@ -49,9 +59,14 @@ export default function Nvbar() {
           </svg>
         </button>
 
-        <div className="hidden w-full lg:block lg:w-auto" id="navbar-default">
+        <div
+          className={`${
+            responsive ? `flex` : `hidden`
+          } w-full lg:block lg:w-auto`}
+          id="navbar-default"
+        >
           {token ? (
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  bg-gray-800 md:bg-gray-900 border-gray-700">
+            <ul className="w-full font-medium flex flex-col p-4 md:p-6 mt-4 border rounded-lg  lg:flex-row  rtl:space-x-reverse  bg-gray-800  border-gray-700">
               <li>
                 <NavLink
                   to={"/"}
@@ -90,19 +105,21 @@ export default function Nvbar() {
         </div>
 
         <div
-          className="hidden w-full lg:flex  lg:flex-nowrap lg:w-auto lg:gap-10"
+          className={`${
+            responsive ? `flex` : `hidden`
+          } w-full lg:flex  lg:flex-nowrap lg:w-auto lg:gap-10`}
           id="navbar-default"
         >
-          <ul className="flex  items-center space-x-8 text-white">
+          {/* <ul className="flex  items-center space-x-8 text-white">
             <li>
               <i className="fa-solid fa-heart cursor-pointer" />
             </li>
             <li>
               <i className="fa-solid fa-cart-shopping cursor-pointer" />
             </li>
-          </ul>
+          </ul> */}
 
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  bg-gray-800 md:bg-gray-900 border-gray-700">
+          <ul className="w-full font-medium flex flex-col p-4 md:p-6 mt-4 border rounded-lg  lg:flex-row  rtl:space-x-reverse  bg-gray-800  border-gray-700">
             {token ? (
               <li>
                 <span
