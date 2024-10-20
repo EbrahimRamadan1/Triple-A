@@ -66,7 +66,7 @@ export default function Nvbar() {
           id="navbar-default"
         >
           {token ? (
-            <ul className="w-full font-medium flex flex-col p-4 md:p-6 mt-4 border rounded-lg  lg:flex-row  rtl:space-x-reverse  bg-gray-800  border-gray-700">
+            <ul className="w-full font-medium flex flex-col p-4 lg:p-0 mt-4 border rounded-lg  lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 md:border-0  bg-gray-800 lg:bg-gray-900 border-gray-700">
               <li>
                 <NavLink
                   to={"/"}
@@ -119,7 +119,7 @@ export default function Nvbar() {
             </li>
           </ul> */}
 
-          <ul className="w-full font-medium flex flex-col p-4 md:p-6 mt-4 border rounded-lg  lg:flex-row  rtl:space-x-reverse  bg-gray-800  border-gray-700">
+          <ul className="w-full font-medium flex flex-col p-4 lg:p-0 mt-4 border rounded-lg  lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0  bg-gray-800 lg:bg-gray-900 border-gray-700">
             {token ? (
               <li>
                 <span
