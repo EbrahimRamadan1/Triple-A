@@ -1,0 +1,44 @@
+.card {
+  border: 1px solid #a8a8a8;
+  background-color: #ffffff;
+  border-radius: 20px 20px;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 5%;
+  position: relative;
+}
+.card .imageCard {
+  overflow: hidden;
+}
+.card .imageCard img {
+  transition: ease all 700ms;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.addWishList {
+  z-index: 100;
+  width: 12%;
+  height: auto;
+  display: flex;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.addWishList i {
+  font-size: 25px;
+}
+
+.card:hover img {
+  transform: scale(1.1, 1.1);
+}/*# sourceMappingURL=card.css.map */

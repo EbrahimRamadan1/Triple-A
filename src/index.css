@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --mainColor: #111827;
+  --mainColorLight: #67728f;
+  --secondColor: #db2839;
+  --textColor: black;
+}
+
+.active {
+  color: #3b82f6;
+}/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --mainColor: #111827;
+  --mainColorLight: #67728f;
+  --secondColor: #db2839;
+  --textColor: black;
+}
+
+// .active {
+//   border-bottom: 3px solid var(--secondColor);
+//   // color: rgb(29 78 216);
+// }
+
+.active {
+  color: #3b82f6;
+}

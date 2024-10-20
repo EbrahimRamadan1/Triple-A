@@ -1,0 +1,32 @@
+.logo {
+  color: white !important;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 1%;
+}
+.logo .imageContainer {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  align-content: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50% 50%;
+  background-color: #eec3c0;
+}
+.logo .imageContainer img {
+  width: 120px;
+  height: 120px;
+}
+.logo .logoTittle {
+  font-weight: 600;
+  font-size: 30px;
+  font-family: logoFont;
+}/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,51 @@
+.card {
+  border: 1px solid #a8a8a8;
+  background-color: #ffffff;
+  //   width: 20%;
+  border-radius: 20px 20px;
+  //   height: 55vh;
+  display: flex;
+  //   box-shadow: 1px 1px 4px -3px black;
+  overflow: hidden;
+  cursor: pointer;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 5%;
+  position: relative;
+  .imageCard {
+    overflow: hidden;
+    // border-radius: 20px 20px;
+
+    img {
+      //   width: 100%;
+      //   max-height: auto;
+      transition: ease all 700ms;
+      object-fit: cover;
+      // border-radius: 20px 20px;
+    }
+  }
+}
+// .addWishList {
+//   // z-index: 100;
+//   width: 12%;
+//   height: auto;
+//   display: flex;
+//   position: absolute;
+//   top: 20px;
+//   right: 15px;
+//   flex-direction: row;
+//   flex-wrap: nowrap;
+//   align-content: center;
+//   justify-content: center;
+//   align-items: center;
+//   i {
+//     font-size: 25px;
+//   }
+// }
+.card:hover {
+  img {
+    transform: scale(1.1, 1.1);
+  }
+}
