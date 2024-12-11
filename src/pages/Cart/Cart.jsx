@@ -56,13 +56,13 @@ export default function Cart() {
     <>
       {cartProducts ? (
         numOfCartItems === 0 ? (
-          <div className="w-full flex items-center justify-center">
+          <div className="w-full flex items-center justify-center min-h-screen">
             <h6 className=" text-[#525151] font-medium text-[20px] italic text-center">
               There is no Items in your cart
             </h6>
           </div>
         ) : (
-          <div className="px-3 py-1 md:px-7 md:py-2 lg:px-10 lg:py-3">
+          <div className="px-3 py-1 md:px-7 md:py-2 lg:px-10 lg:py-3 w-full">
             <h2 className="text-[#525151] font-medium text-[20px] italic text-center">
               Total Price: <span className="text-black">${totalCartPrice}</span>
             </h2>
@@ -82,10 +82,10 @@ export default function Cart() {
             </button>
 
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
-              <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
+              <table className="w-full text-sm text-left text-gray-500">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-16 py-3">
+                    <th scope="col" className="px-4 py-3">
                       <span className="sr-only">Image</span>
                     </th>
                     <th scope="col" className="px-6 py-3">
@@ -102,27 +102,24 @@ export default function Cart() {
                     </th>
                   </tr>
                 </thead>
-
                 <tbody>
                   {cartProducts.map((product) => (
                     <tr
-                      className="bg-white border-b  hover:bg-gray-50 "
+                      className="bg-white border-b hover:bg-gray-50"
                       key={product._id}
                     >
-                      <td className="p-4">
+                      <td className="md:p-2 lg:p-4">
                         <img
                           src={product.product.imageCover}
-                          className="w-16 md:w-32 max-w-full max-h-full"
+                          className="w-16 sm:w-24 md:w-32 max-w-full max-h-full"
                           alt={product.product.title}
                         />
                       </td>
-
-                      <td className="px-6 py-4 font-semibold text-gray-900 ">
+                      <td className="px-3 md:px-4 lg:px-6 py-4 font-semibold text-gray-900">
                         {product.product.title}
                       </td>
-
-                      <td className="px-6 py-4">
-                        <div className="flex items-center">
+                      <td className="px-3 md:px-4 lg:px-6 py-4">
+                        <div className="flex items-center space-x-2">
                           <button
                             onClick={() =>
                               handleUpdateCount(
@@ -130,15 +127,12 @@ export default function Cart() {
                                 product.count - 1
                               )
                             }
-                            className={`hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none ${
+                            className={`hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 p-1 rounded-full ${
                               product.count === 1 ? "hidden" : "block"
                             }`}
-                            type="button"
                           >
-                            <span className="sr-only">Quantity button</span>
                             <svg
-                              className="w-3 h-3"
-                              aria-hidden="true"
+                              className="w-4 h-4 text-gray-500"
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
                               viewBox="0 0 18 2"
@@ -153,16 +147,12 @@ export default function Cart() {
                             </svg>
                           </button>
 
-                          <div className="text-center">
-                            <input
-                              type="string"
-                              readOnly
-                              id="first_product"
-                              className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 "
-                              placeholder={product.count}
-                              required
-                            />
-                          </div>
+                          <input
+                            type="number"
+                            readOnly
+                            className="w-12 text-center bg-gray-50 border border-gray-300 rounded-lg"
+                            value={product.count}
+                          />
 
                           <button
                             onClick={() =>
@@ -171,13 +161,10 @@ export default function Cart() {
                                 product.count + 1
                               )
                             }
-                            className="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200"
-                            type="button"
+                            className="p-1 rounded-full hover:bg-gray-100 focus:ring-4 focus:ring-gray-200"
                           >
-                            <span className="sr-only">Quantity button</span>
                             <svg
-                              className="w-3 h-3"
-                              aria-hidden="true"
+                              className="w-4 h-4 text-gray-500"
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
                               viewBox="0 0 18 18"
@@ -193,15 +180,12 @@ export default function Cart() {
                           </button>
                         </div>
                       </td>
-
-                      <td className="px-6 py-4 font-semibold text-gray-900 ">
+                      <td className="px-3 md:px-4 lg:px-6 py-4 font-semibold text-gray-900">
                         ${product.price}
                       </td>
-
-                      <td className="px-6 py-4">
+                      <td className="px-3 md:px-4 lg:px-6 py-4">
                         <button
-                          href="#"
-                          className="font-medium text-red-600  hover:underline"
+                          className="font-medium text-red-600 hover:underline"
                           onClick={() => handleRemoveItem(product.product._id)}
                         >
                           Remove

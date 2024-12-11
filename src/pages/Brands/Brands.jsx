@@ -21,13 +21,13 @@ export default function Brands() {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-8 w-full">
       <div className="grid grid-cols-4 gap-5">
         {data.data.data.map((brand) => {
           return (
-            <div className="brand rounded-xl bg-[#3b82f6]" key={brand._id}>
+            <div className="brand rounded-xl bg-[#fff] pb-3" key={brand._id}>
               <img className="w-full" src={brand.image} alt={brand.name} />
-              <h5 className="text-center text-white">{brand.name}</h5>
+              <h5 className="text-center text-black">{brand.name}</h5>
             </div>
           );
         })}

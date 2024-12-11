@@ -11,6 +11,7 @@
   align-items: flex-start;
   gap: 5%;
   position: relative;
+  /* height: 370px; */
 }
 .card .imageCard {
   overflow: hidden;

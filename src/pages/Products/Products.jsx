@@ -1,18 +1,30 @@
 // import { useEffect, useState } from "react";
 import "./Products.scss";
 import axios from "axios";
-// import Card from "../../components/Card/Card";
 import Loader from "../../components/Loader/Loader";
 import CategoriesSlide from "../../components/CategoriesSlider/CategoriesSlider";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { cartContext } from "../../context/CartContext";
 import toast from "react-hot-toast";
-// import { useState } from "react";
+import { useState } from "react";
+import Pagenation from "../../components/Pagenation/Pagenation";
+import { lazy } from "react";
+import ImgLoader from "../../components/ImgLoader/ImgLoader";
+
+const CardImg = lazy(() => import("../../components/CardImg/CardImg"));
+
 // import HomeSlider from "../../components/HomeSlider/HomeSlider";
 
 export default function Products() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const nItems = 10;
+  const lastIndex = currentPage * nItems;
+  const firstIndex = lastIndex - nItems;
+
+  // const pageProducts =
+
   // const [wishList, setWishList] = useState(false);
 
   // const [allProducts, setAllProduct] = useState(null);
@@ -76,17 +88,18 @@ export default function Products() {
     return <div> {error.message} </div>;
   }
 
+  const itemsPerPage = data.data.data.slice(firstIndex, lastIndex);
+
   return (
     <>
-      <div className="p-8">
-        {/* <HomeSlider /> */}
+      <div className="p-8 w-full">
         <CategoriesSlide />
-        <div className=" grid md:grid-cols-3 gap-3 lg:grid-cols-5 pt-10">
-          {data.data.data.map((product) => {
+        <div className=" grid grid-cols-2  md:grid-cols-3 gap-3 lg:grid-cols-5 pt-3 md:pt-5 lg:pt-5">
+          {itemsPerPage.map((product) => {
             return (
               <div key={product._id} className="relative">
                 <div
-                  className="w-[12%] absolute z-10 h-auto top-3 right-2 cursor-pointer"
+                  className="w-[12%] absolute z-10 h-auto top-1 right-1 md:right-1.5 md:top-2 lg:top-3 lg:right-2 cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleAddToCart(product._id);
@@ -94,38 +107,41 @@ export default function Products() {
                   }}
                   // style={wishList ? { color: "#db2839" } : { color: "#a8a8a8" }}
                 >
-                  <i className="fa-solid fa-heart text-[25px] text-[#a8a8a8]" />
+                  <i className="fa-solid fa-heart text-[15px] md:text-[20px] lg:text-[25px] text-[#a8a8a8]" />
                 </div>
 
                 <Link to={`product-details/${product._id}`}>
-                  <div className="card pb-2">
-                    <div className="imageCard w-full">
-                      <img
-                        src={product.imageCover}
-                        className="w-full h-auto"
-                        alt={product.title}
-                      />
-                    </div>
+                  <div className="card pb-2 ">
+                    <React.Suspense
+                      fallback={
+                        <ImgLoader
+                          style={"w-full h-[204px] md:h-[307px] lg:h-[382px] "}
+                        />
+                      }
+                    >
+                      <CardImg src={product.imageCover} alt={product.title} />
+                    </React.Suspense>
 
-                    <div className="px-2">
-                      <h6 className="brandCard col-12 text-[#3b82f6]">
+                    <div className="px-2  w-full text-[9px] md:text-[13px] lg:text-[17px]">
+                      <h6 className="brandCard col-12 text-[#3b82f6] text-[7px] md:text-[12px] lg:text-[15px]">
                         {product.brand.name}
                       </h6>
-                      <h4 className="productName col-12">
+                      <h4 className="productName">
                         {product.title.split(" ").splice(0, 3).join(" ")}
                       </h4>
-                      <p className="cardPrice col-12">
+                      <p className="cardPrice text-[8px] md:text-[12px] lg:text-[17px] flex-nowrap w-full">
                         <span
                           className={
                             product.priceAfterDiscount
-                              ? "line-through text-red-500"
+                              ? "line-through text-gray-400"
                               : null
                           }
                         >
-                          {product.price}
+                          {product.price} EGP
                         </span>
-                        <span className="ml-3">
-                          {product.priceAfterDiscount}
+                        <span className="ml-[3%] w-full">
+                          {product.priceAfterDiscount}{" "}
+                          {product.priceAfterDiscount ? "EGP" : null}
                         </span>
                       </p>
                     </div>
@@ -133,7 +149,7 @@ export default function Products() {
 
                   {/* <Card
                     key={product._id}
-                    mainImage={product.imageCover}
+                    mainImage={product.imageCover} 
                     price={product.price}
                     priceAfterDiscount={product.priceAfterDiscount}
                     brand={product.category.name}
@@ -145,32 +161,14 @@ export default function Products() {
             );
           })}
         </div>
+
+        <Pagenation
+          nItems={nItems}
+          totalItems={data.data.data.length}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
       </div>
     </>
-    // <>
-    //   {allProducts ? (
-    //     <div className="p-8">
-    //       {/* <HomeSlider /> */}
-    //       <CategoriesSlide />
-    //       <div className=" grid md:grid-cols-3 gap-3 lg:grid-cols-5 pt-10">
-    //         {allProducts.map((product) => {
-    //           return (
-    //             <Card
-    //               key={product._id}
-    //               mainImage={product.imageCover}
-    //               price={product.price}
-    //               priceAfterDiscount={product.priceAfterDiscount}
-    //               brand={product.category.name}
-    //               name={product.title}
-    //               altP={product.title}
-    //             />
-    //           );
-    //         })}
-    //       </div>
-    //     </div>
-    //   ) : (
-    //     <Loader />
-    //   )}
-    // </>
   );
 }

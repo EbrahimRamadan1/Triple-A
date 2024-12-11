@@ -16,6 +16,10 @@ import CartContextProvider from "./context/CartContext.jsx";
 import { Toaster } from "react-hot-toast";
 import Payment from "./pages/Payment/Payment.jsx";
 import { Offline } from "react-detect-offline";
+// import Test from "./pages/Test/Test.jsx";
+
+
+// import Test from "./components/Test/Test.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +55,7 @@ const router = createBrowserRouter([
         ),
       },
       { path: "/categories", element: <Categories /> },
+      // { path: "/test", element: <Test /> },
       { path: "/login", element: <LogIn /> },
       { path: "*", element: <NotFound /> },
     ],
@@ -61,7 +66,7 @@ export default function App() {
   const reactQueryConfig = new QueryClient();
 
   return (
-    <div className="h-screen">
+    <div className="min-h-screen bg-[#f9f9f9]">
       <AuthContext>
         <QueryClientProvider client={reactQueryConfig}>
           <CartContextProvider>

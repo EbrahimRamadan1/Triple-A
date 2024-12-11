@@ -50,15 +50,15 @@ export default function ProductDetails() {
   const projectDetailsObj = data.data.data;
 
   return (
-    <div className="container mx-auto p-5 flex items-center justify-between">
-      <div className="w-1/4">
+    <div className="container mx-auto p-5 flex flex-wrap items-center justify-between lg:flex-nowrap">
+      <div className="w-full lg:w-1/4">
         <img
-          className="w-full"
+          className="w-full object-contain h-[40vh] md:h-[60vh]"
           src={projectDetailsObj.imageCover}
           alt={projectDetailsObj.title}
         />
       </div>
-      <div className="w-[70%]  ">
+      <div className="w-full lg:w-[70%]  ">
         <h1 className="text-black py-2">{projectDetailsObj.title}</h1>
         <p className="py-2">{projectDetailsObj.description}</p>
         <h5 className="py-2">{projectDetailsObj.category.name}</h5>

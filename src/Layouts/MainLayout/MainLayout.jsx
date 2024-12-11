@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar/Navbar";
 
 export default function MainLayout() {
   return (
-    <>
+    <div className="min-h-screen flex flex-wrap content-between justify-center">
       {/* <Nvbar /> */}
 
       <Navbar />
@@ -13,6 +13,6 @@ export default function MainLayout() {
       <Outlet />
 
       <Footer />
-    </>
+    </div>
   );
 }

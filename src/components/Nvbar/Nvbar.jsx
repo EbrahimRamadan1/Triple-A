@@ -25,7 +25,7 @@ export default function Nvbar() {
   }
 
   return (
-    <nav className=" border-gray-200 bg-gray-900 z-20">
+    <nav className=" border-gray-200 bg-gray-900 z-20 w-full">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           to={"/"}

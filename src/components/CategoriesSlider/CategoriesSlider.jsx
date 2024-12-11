@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 // import { useQuery } from "react-query";
 import useAllCategories from "../../customHooks/useAllCategories";
 import Loader2 from "../Loader2/Loader2";
+import LazyLoad from "react-lazyload";
 
 export default function CategoriesSlide() {
   // const [allCategories, setAllCategories] = useState(null);
@@ -61,7 +62,9 @@ export default function CategoriesSlide() {
       <Slider {...settings}>
         {data.data.data.map((el) => (
           <div key={el._id}>
-            <img className=" h-36 w-full " src={el.image} alt={el.name} />
+            <LazyLoad>
+              <img className=" h-36 w-full " src={el.image} alt={el.name} />
+            </LazyLoad>
             <h6 className="text-center">{el.name}</h6>
           </div>
         ))}
