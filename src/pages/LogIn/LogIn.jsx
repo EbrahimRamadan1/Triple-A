@@ -64,7 +64,7 @@ export default function LogIn() {
   });
 
   return (
-    <div className="p-5">
+    <div className="p-5 w-full">
       <h2 className="text-center text-[#db2839] text-lg">Register Now</h2>
 
       {errMsg ? (

@@ -14,6 +14,7 @@ export default function Nvbar() {
     setToken(null);
 
     navigate("/logIn");
+    navTogle();
   };
 
   function navTogle() {
@@ -26,7 +27,7 @@ export default function Nvbar() {
 
   return (
     <nav className=" border-gray-200 bg-gray-900 z-20 w-full">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
         <Link
           to={"/"}
           className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -67,7 +68,7 @@ export default function Nvbar() {
         >
           {token ? (
             <ul className="w-full font-medium flex flex-col p-4 lg:p-0 mt-4 border rounded-lg  lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 md:border-0  bg-gray-800 lg:bg-gray-900 border-gray-700">
-              <li>
+              <li onClick={navTogle}>
                 <NavLink
                   to={"/"}
                   className="block py-2 px-3  rounded md:bg-transparent  md:p-0 text-white "
@@ -76,7 +77,7 @@ export default function Nvbar() {
                   Products
                 </NavLink>
               </li>
-              <li>
+              <li onClick={navTogle}>
                 <NavLink
                   to={"/categories"}
                   className="block py-2 px-3  rounded   md:border-0  md:p-0 text-white md:hover:text-blue-500 hover:text-white "
@@ -84,7 +85,7 @@ export default function Nvbar() {
                   Categories
                 </NavLink>
               </li>
-              <li>
+              <li onClick={navTogle}>
                 <NavLink
                   to={"/Brands"}
                   className="block py-2 px-3  rounded   md:border-0  md:p-0 text-white md:hover:text-blue-500 hover:text-white "
@@ -92,7 +93,7 @@ export default function Nvbar() {
                   Brands
                 </NavLink>
               </li>
-              <li>
+              <li onClick={navTogle}>
                 <NavLink
                   to={"/cart"}
                   className="block py-2 px-3  rounded   md:border-0  md:p-0 text-white md:hover:text-blue-500 hover:text-white "
@@ -111,17 +112,17 @@ export default function Nvbar() {
           id="navbar-default"
         >
           {/* <ul className="flex  items-center space-x-8 text-white">
-            <li>
+            <li onClick={navTogle}>
               <i className="fa-solid fa-heart cursor-pointer" />
             </li>
-            <li>
+            <li onClick={navTogle}>
               <i className="fa-solid fa-cart-shopping cursor-pointer" />
             </li>
           </ul> */}
 
           <ul className="w-full font-medium flex flex-col p-4 lg:p-0 mt-4 border rounded-lg  lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0  bg-gray-800 lg:bg-gray-900 border-gray-700">
             {token ? (
-              <li>
+              <li onClick={navTogle}>
                 <span
                   to={""}
                   className="block py-2 px-3 cursor-pointer rounded   md:border-0  md:p-0 text-white md:hover:text-blue-500 hover:text-white "
@@ -132,16 +133,15 @@ export default function Nvbar() {
               </li>
             ) : (
               <>
-                <li>
+                <li onClick={navTogle}>
                   <NavLink
                     to={"/login"}
                     className="block py-2 px-3  bg-blue-700 rounded md:bg-transparent  md:p-0 text-white"
-                    aria-current="page"
                   >
                     Login
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={navTogle}>
                   <NavLink
                     to={"/register"}
                     className="block py-2 px-3  rounded   md:border-0  md:p-0 text-white md:hover:text-blue-500 hover:text-white "

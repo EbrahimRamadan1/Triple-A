@@ -22,12 +22,12 @@ export default function Brands() {
 
   return (
     <div className="p-8 w-full">
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-4 lg:gap-5">
         {data.data.data.map((brand) => {
           return (
             <div className="brand rounded-xl bg-[#fff] pb-3" key={brand._id}>
               <img className="w-full" src={brand.image} alt={brand.name} />
-              <h5 className="text-center text-black">{brand.name}</h5>
+              <h5 className="text-center text-black text-sm md:text-lg">{brand.name}</h5>
             </div>
           );
         })}

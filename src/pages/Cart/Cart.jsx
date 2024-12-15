@@ -14,8 +14,6 @@ export default function Cart() {
     clearCart,
   } = useContext(cartContext);
 
-  // console.log("allProducts", cartProducts);
-
   function handleUpdateCount(id, count) {
     updateCount(id, count);
   }

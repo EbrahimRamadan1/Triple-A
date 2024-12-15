@@ -20,6 +20,30 @@ export default function CategoriesSlide() {
     arrow: false,
     autoplay: true,
     autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablets and desktops
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 768, // Tablets
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480, // Mobile
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: false,
+        },
+      },
+    ],
   };
 
   // const getAllCategories = async () => {
@@ -59,11 +83,11 @@ export default function CategoriesSlide() {
 
   return (
     <>
-      <Slider {...settings}>
+      <Slider {...settings} className="p-2">
         {data.data.data.map((el) => (
           <div key={el._id}>
             <LazyLoad>
-              <img className=" h-36 w-full " src={el.image} alt={el.name} />
+              <img className=" h-36 w-full" src={el.image} alt={el.name} />
             </LazyLoad>
             <h6 className="text-center">{el.name}</h6>
           </div>

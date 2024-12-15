@@ -16,7 +16,7 @@ export default function Categories() {
 
   return (
     <div className="p-8 w-full">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 ">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-5">
         {data.data.data.map((category) => (
           <div className="category rounded-xl " key={category._id}>
             <div className="h-[30vh] relative">
@@ -26,7 +26,9 @@ export default function Categories() {
                 src={category.image}
                 alt={category.name}
                 loading="lazy"
-                onLoad={(e) => (e.target.previousSibling.style.display = "none")}
+                onLoad={(e) =>
+                  (e.target.previousSibling.style.display = "none")
+                }
                 // onError={(e) => console.error("Image failed to load")}
               />
             </div>
