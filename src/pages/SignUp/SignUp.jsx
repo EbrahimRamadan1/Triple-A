@@ -128,7 +128,6 @@ export default function SignUp() {
 
   return (
     <div className="p-5 w-full">
-    
       <h2 className="text-center text-[#db2839] text-lg">Register Now</h2>
 
       {errMsg ? (
@@ -311,18 +310,17 @@ export default function SignUp() {
             "Submit"
           ) : (
             <ColorRing
-  visible={true}
-  height="30"
-  width="30"
-  ariaLabel="color-ring-loading"
-  wrapperStyle={{}}
-  wrapperClass="color-ring-wrapper"
-  colors={['#fff', '#fff', '#fff', '#fff', '#fff']}
-  />
+              visible={true}
+              height="30"
+              width="30"
+              ariaLabel="color-ring-loading"
+              wrapperStyle={{}}
+              wrapperClass="color-ring-wrapper"
+              colors={["#fff", "#fff", "#fff", "#fff", "#fff"]}
+            />
           )}
         </button>
       </form>
-
     </div>
   );
 }

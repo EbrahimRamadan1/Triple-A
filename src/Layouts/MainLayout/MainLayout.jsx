@@ -9,7 +9,7 @@ export default function MainLayout() {
       {/* <Nvbar /> */}
 
       <Navbar />
-      
+
       <Outlet />
 
       <Footer />
